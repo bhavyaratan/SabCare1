@@ -10,3 +10,4 @@ torch
 accelerate
 bitsandbytes
 unsloth
+googletrans==4.0.0-rc1

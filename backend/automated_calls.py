@@ -7,6 +7,7 @@ from db import SessionLocal, Patient
 from twilio_call import twilio_call_service, make_call_and_play_script
 from medgemma import medgemma_ai
 from tts_service import tts_service
+from translation_service import translation_service
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -60,23 +61,27 @@ class AutomatedCallService:
                 gestational_age=gestational_age,
                 risk_factors=risk_factors
             )
-            
-            # Convert to TTS
-            logger.info(f"Converting script to TTS for {patient_name}")
-            audio_file = self.tts.text_to_speech(enhanced_script)
-            
+
+            # Translate to Hindi
+            logger.info(f"Translating script to Hindi for {patient_name}")
+            hindi_script = translation_service.to_hindi(enhanced_script)
+
+            # Convert to TTS in Hindi
+            logger.info(f"Converting Hindi script to TTS for {patient_name}")
+            audio_file = self.tts.text_to_speech(hindi_script, language="hi")
+
             if not audio_file:
                 logger.error(f"Failed to generate TTS for {patient_name}")
                 call_result["error"] = "TTS generation failed"
                 return call_result
-            
+
             # Send via Twilio using patient's phone number with message option
             logger.info(f"Sending IVR call to {patient_name} at {patient.phone}")
-            
-            # Use the new TwiML with message option
-            twiml = twilio_call_service.create_twiml_with_message_option(enhanced_script, patient_id)
+
+            # Use the new TwiML with message option in Hindi
+            twiml = twilio_call_service.create_twiml_with_message_option(hindi_script, patient_id, language="hi-IN")
             success = twilio_call_service._make_call_with_retry(patient.phone, twiml, f"ivr_{patient_id}_{int(time.time())}")
-            
+
             # Cleanup audio file
             self.tts.cleanup_audio_file(audio_file)
             

@@ -58,6 +58,7 @@ SabCare is an advanced **Interactive Voice Response (IVR) system** designed spec
 - **Fine-tuned Gemma Model**: Trained on pregnancy care data for medical accuracy and optimized with Unsloth's 4-bit quantization
 - **Personalized Content**: Patient-specific messages based on gestational age, risk factors, and medical history
 - **Risk-Aware Messaging**: Different message strategies for high-risk vs. low-risk pregnancies
+- **Hindi Translation**: Automatically converts generated scripts to Hindi for localized IVR delivery
 - **Medication Integration**: Automated reminders with specific dosage and timing information
 
 ### 2. **Comprehensive Call Scheduling** 📅
@@ -344,7 +345,7 @@ This system is specifically designed for **AI/healthcare competitions** with:
 
 ## 📈 Future Enhancements
 
-- **Multi-language Support**: Expand to support multiple languages
+- **Additional Language Support**: Currently supports English and Hindi; expand to more languages
 - **Advanced Analytics**: Machine learning for patient engagement prediction
 - **Integration APIs**: Connect with existing healthcare systems
 - **Mobile App**: Native mobile application for patients
