@@ -125,14 +125,14 @@ class TwilioCallService:
             logger.error(f"Error creating TwiML: {e}")
             return f'<Response><Say voice="alice">Hello, this is your health reminder.</Say></Response>'
     
-    def create_twiml_with_message_option(self, script: str, patient_id: int = None) -> str:
+    def create_twiml_with_message_option(self, script: str, patient_id: int = None, language: str = "en-US") -> str:
         """Create TwiML that plays the script and then offers to leave a message"""
         try:
             safe_script = html.escape(script)
-            
-            # Create TwiML with the main script, then offer to leave a message
+
+            # Create TwiML with the main script in specified language, then offer to leave a message
             twiml = f'''<Response>
-                <Say voice="alice">{safe_script}</Say>
+                <Say voice="alice" language="{language}">{safe_script}</Say>
                 <Pause length="1"/>
                 <Say voice="alice">Press 1 if you'd like to leave a message for our medical team.</Say>
                 <Gather input="dtmf" timeout="10" action="/twilio/handle_message_choice" method="POST">
@@ -140,7 +140,7 @@ class TwilioCallService:
                 </Gather>
                 <Say voice="alice">Thank you for calling. Goodbye.</Say>
             </Response>'''
-            
+
             return twiml
         except Exception as e:
             logger.error(f"Error creating TwiML with message option: {e}")
