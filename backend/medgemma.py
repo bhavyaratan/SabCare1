@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import logging
 import os
 from datetime import datetime, timedelta
@@ -39,14 +39,15 @@ class MedGemmaAI:
         try:
             logger.info("Loading medical AI model...")
             
-            # Use a smaller, more stable model for now
-            model_name = "microsoft/DialoGPT-small"  # Smaller model for testing
-            
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+            # Load quantized Gemma model from Unsloth
+            model_name = "unsloth/gemma-3n-E4B-it-unsloth-bnb-4bit"
+
+            quant_config = BitsAndBytesConfig(load_in_4bit=True)
+            self.tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_name,
-                torch_dtype=torch.float32,  # Use float32 for stability
-                low_cpu_mem_usage=True
+                quantization_config=quant_config,
+                device_map="auto",
             )
             
             # Add padding token if not present

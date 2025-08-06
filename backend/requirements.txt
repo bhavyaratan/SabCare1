@@ -5,3 +5,8 @@ sqlalchemy
 apscheduler
 pyserial
 python-multipart
+transformers
+torch
+accelerate
+bitsandbytes
+unsloth

@@ -5,16 +5,16 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![React](https://img.shields.io/badge/React-18+-61DAFB.svg)](https://reactjs.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com)
-[![Gemma](https://img.shields.io/badge/AI-Gemma%202B-orange.svg)](https://ai.google.dev/gemma)
+[![Gemma](https://img.shields.io/badge/AI-Gemma%204bit%20Unsloth-orange.svg)](https://huggingface.co/unsloth/gemma-3n-E4B-it-unsloth-bnb-4bit)
 [![Twilio](https://img.shields.io/badge/Voice-Twilio-red.svg)](https://twilio.com)
 
 ## 🎯 Project Overview
 
-SabCare is an advanced **Interactive Voice Response (IVR) system** designed specifically for maternal healthcare. It leverages **fine-tuned Gemma AI models** to provide personalized pregnancy care support through automated phone calls, intelligent message processing, and comprehensive patient management.
+SabCare is an advanced **Interactive Voice Response (IVR) system** designed specifically for maternal healthcare. It leverages **fine-tuned Gemma AI models**—running in Unsloth's efficient 4-bit format—to provide personalized pregnancy care support through automated phone calls, intelligent message processing, and comprehensive patient management.
 
 ## 🌟 Key Innovations
 
-- **🤖 AI-Powered Personalization**: Fine-tuned Gemma 2B model generates context-aware, patient-specific health messages
+- **🤖 AI-Powered Personalization**: Fine-tuned Gemma model (Unsloth 4-bit) generates context-aware, patient-specific health messages
 - **📞 Two-Way Communication**: Patients can leave voice messages and receive AI-processed callbacks
 - **📅 Intelligent Scheduling**: Automated medication reminders, weekly check-ins, and appointment notifications
 - **🏥 Medical Knowledge Integration**: RAG (Retrieval-Augmented Generation) system with comprehensive pregnancy care database
@@ -32,8 +32,8 @@ SabCare is an advanced **Interactive Voice Response (IVR) system** designed spec
          └───────────────────────┼───────────────────────┘
                                  │
                     ┌─────────────────┐
-                    │   Gemma 2B AI   │
-                    │   (Fine-tuned)  │
+                    │ Unsloth Gemma   │
+                    │   (4-bit)       │
                     └─────────────────┘
 ```
 
@@ -55,7 +55,7 @@ SabCare is an advanced **Interactive Voice Response (IVR) system** designed spec
 ## 🚀 Core Features
 
 ### 1. **AI-Powered IVR Messaging** 🧠
-- **Fine-tuned Gemma Model**: Trained on pregnancy care data for medical accuracy
+- **Fine-tuned Gemma Model**: Trained on pregnancy care data for medical accuracy and optimized with Unsloth's 4-bit quantization
 - **Personalized Content**: Patient-specific messages based on gestational age, risk factors, and medical history
 - **Risk-Aware Messaging**: Different message strategies for high-risk vs. low-risk pregnancies
 - **Medication Integration**: Automated reminders with specific dosage and timing information
@@ -69,7 +69,7 @@ SabCare is an advanced **Interactive Voice Response (IVR) system** designed spec
 ### 3. **Two-Way Communication System** 📞
 - **"Press 1" Functionality**: Patients can leave voice messages after each call
 - **Message Recording**: Secure audio capture and storage
-- **AI Processing**: Intelligent analysis of patient messages using Gemma
+- **AI Processing**: Intelligent analysis of patient messages using the Unsloth Gemma 4-bit model
 - **Automated Callbacks**: Scheduled responses with personalized AI-generated content
 
 ### 4. **Patient Management System** 👥
@@ -88,7 +88,7 @@ SabCare is an advanced **Interactive Voice Response (IVR) system** designed spec
 
 ### AI Model Architecture
 ```python
-# Fine-tuned Gemma 2B for IVR message generation
+# Unsloth 4-bit Gemma for IVR message generation
 class FineTunedMedGemmaAI:
     def generate_personalized_ivr_message(
         self, 
@@ -252,7 +252,7 @@ twilio:
 
 ## 🤖 AI Components
 
-### Fine-tuned Gemma Model
+### Fine-tuned Gemma Model (Unsloth 4-bit)
 - **Purpose**: Generate personalized, medical-accurate IVR messages
 - **Training Data**: Pregnancy care specific information and guidelines
 - **Features**: 
@@ -335,7 +335,7 @@ npx vercel --prod
 
 This system is specifically designed for **AI/healthcare competitions** with:
 
-- **Advanced AI Integration**: Fine-tuned Gemma models for medical accuracy
+- **Advanced AI Integration**: Fine-tuned Gemma model running in Unsloth's 4-bit format for medical accuracy and efficiency
 - **Real-time Processing**: Intelligent message processing and callback scheduling
 - **Professional Healthcare Focus**: Medical knowledge base and compliance
 - **Scalable Architecture**: Production-ready with comprehensive error handling
