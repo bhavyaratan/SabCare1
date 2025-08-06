@@ -5,4 +5,9 @@ sqlalchemy
 apscheduler
 pyserial
 python-multipart
+transformers
+torch
+accelerate
+bitsandbytes
+unsloth
 googletrans==4.0.0-rc1
